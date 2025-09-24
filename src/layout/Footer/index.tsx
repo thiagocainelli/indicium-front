@@ -14,7 +14,7 @@ const FooterLayout = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="footer-gradient"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

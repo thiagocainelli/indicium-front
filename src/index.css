@@ -202,15 +202,6 @@ body {
   animation: pulse 2s infinite;
 }
 
-/* Tabela responsiva */
-.ant-table-wrapper {
-  overflow-x: auto;
-}
-
-.ant-table {
-  min-width: 800px;
-}
-
 .ant-table-thead > tr > th {
   background: var(--color-bg-tertiary) !important;
   font-weight: 600 !important;

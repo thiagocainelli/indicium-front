@@ -1,21 +1,21 @@
 // DTO types for SRAG module - use type (no export) and Dto suffix
 
 type SragMetricsDto = {
-  caseIncreaseRate: number; // %
-  mortalityRate: number; // %
-  icuOccupancyRate: number; // %
-  vaccinationRate: number; // %
-  period: string; // e.g., '2024-01' or 'geral'
-  region: string; // UF or 'Brasil'
+  caseIncreaseRate: number;
+  mortalityRate: number;
+  icuOccupancyRate: number;
+  vaccinationRate: number;
+  period: string;
+  region: string;
 };
 
 type SragChartDataDto = {
-  date: string | Date; // backend may return Date, normalize to Date in UI
+  date: string | Date;
   cases: number;
   deaths: number;
   icuOccupancy: number;
   vaccinations: number;
-  region: string; // UF or city code
+  region: string;
 };
 
 type SragListItemDto = {

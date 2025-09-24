@@ -124,12 +124,11 @@ function Dashboard() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="space-y-8"
       >
-        {/* Header */}
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.5 }}
-          className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
         >
           <div className="flex items-center space-x-3">
             <div className="flex items-center justify-center min-w-10 h-10 bg-gradient-to-br from-teal-500 to-blue-600 rounded-xl shadow-lg">
@@ -158,7 +157,6 @@ function Dashboard() {
           </Button>
         </motion.div>
 
-        {/* Metrics Cards */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -167,7 +165,6 @@ function Dashboard() {
           <MetricsCards metrics={metrics || undefined} />
         </motion.div>
 
-        {/* Chart */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -176,7 +173,6 @@ function Dashboard() {
           <SragChart data={chartData} />
         </motion.div>
 
-        {/* Table */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -190,7 +186,6 @@ function Dashboard() {
           </div>
         </motion.div>
 
-        {/* Filter Drawer */}
         <FilterDrawer
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}

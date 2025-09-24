@@ -1,4 +1,5 @@
 import { Card } from "antd";
+import dayjs from "dayjs";
 import {
   LineChart,
   Line,
@@ -17,10 +18,7 @@ type SragChartProps = {
 export function SragChart({ data }: SragChartProps) {
   const normalized = data.map((d) => ({
     ...d,
-    dateLabel:
-      typeof d.date === "string"
-        ? d.date
-        : new Date(d.date).toISOString().slice(0, 10),
+    dateLabel: d.date ? dayjs(d.date).format("DD/MM/YYYY") : "",
   }));
 
   return (

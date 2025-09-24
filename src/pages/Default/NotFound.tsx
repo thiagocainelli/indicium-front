@@ -12,19 +12,19 @@ const NotFoundPage = () => {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-12 max-w-2xl mx-auto">
-        <Text className={`mb-4 text-gray-100 text-4xl font-bold`}>
+    <main className="flex flex-col items-center justify-center min-h-screen  overflow-hidden">
+      <div className="z-10 flex flex-col items-center justify-center text-center px-6 py-12 max-w-2xl mx-auto">
+        <Text className={`mb-4 text-gray-800 text-4xl font-bold`}>
           Página não encontrada!
         </Text>
 
-        <Text className={`text-lg mb-8 block text-gray-100`}>
+        <Text className={`text-lg mb-8 block text-gray-800`}>
           Desculpe, a página que você está procurando não existe ou foi movida.
           <br />
           Verifique o endereço ou navegue pelas opções abaixo.
         </Text>
 
-        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+        <div className="flex flex-col md:flex-row gap-4 w-full max-w-md">
           <Button
             onClick={handleGoHome}
             type="primary"
@@ -35,14 +35,6 @@ const NotFoundPage = () => {
             Ir para o Início
           </Button>
         </div>
-      </div>
-
-      <div className="absolute top-20 left-10 opacity-20">
-        <img src="/images/square.png" alt="" className="w-16 h-16 rotate-45" />
-      </div>
-
-      <div className="absolute bottom-20 right-10 opacity-20">
-        <img src="/images/square.png" alt="" className="w-12 h-12 -rotate-12" />
       </div>
     </main>
   );

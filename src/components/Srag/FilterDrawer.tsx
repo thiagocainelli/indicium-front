@@ -136,7 +136,7 @@ export function FilterDrawer({
             allowClear
             value={region}
             onChange={(val) => setRegion(val)}
-            placeholder="Ex.: SP ou 3550308"
+            placeholder="Ex.: SP"
             style={{ width: "100%" }}
             options={stateOptions}
           />
