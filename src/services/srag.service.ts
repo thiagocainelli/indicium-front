@@ -4,7 +4,7 @@ const BASE_URL = "/srag";
 
 export async function getSragMetrics(params?: {
   region?: string;
-  period?: string; // format: YYYY-MM
+  period?: string;
 }) {
   const query: string[] = [];
   if (params?.region) query.push(`region=${encodeURIComponent(params.region)}`);
@@ -17,8 +17,8 @@ export async function getSragMetrics(params?: {
 export async function getSragChartData(params: {
   period: "daily" | "monthly" | "yearly";
   region?: string;
-  startDate?: string; // ISO date
-  endDate?: string; // ISO date
+  startDate?: string;
+  endDate?: string;
   groupBy?: "state" | "city";
 }) {
   const query: string[] = [];
@@ -39,11 +39,11 @@ export async function getSragList(params?: {
   itemsPerPage?: number;
   sgUf?: string;
   coMunRes?: string;
-  startDate?: string; // ISO date
-  endDate?: string; // ISO date
-  evolucao?: number; // 1=Cura, 2=Óbito, 3=Óbito outras causas
-  uti?: number; // 1=Sim, 2=Não, 9=Ignorado
-  vacinaCov?: number; // 1=Sim, 2=Não, 9=Ignorado
+  startDate?: string;
+  endDate?: string;
+  evolucao?: number;
+  uti?: number;
+  vacinaCov?: number;
 }) {
   const query: string[] = [];
   if (params?.page !== undefined) query.push(`page=${params.page}`);

@@ -10,7 +10,7 @@ const LayoutBase = ({ children }: { children: React.ReactNode }) => {
       <HeaderLayout />
 
       <Layout.Content
-        className={`relative z-10 flex-1 flex mx-auto md:p-5 p-2`}
+        className={`relative z-10 flex-1 flex mx-auto md:p-5 p-2 md:mt-[60px] mt-[110px]`}
       >
         {children}
       </Layout.Content>
