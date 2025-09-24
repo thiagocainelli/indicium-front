@@ -1,4 +1,4 @@
-import Button from "../../components/Button";
+import { Button } from "../../components/UI";
 import { useAuth } from "../../contexts/AuthContext";
 
 const HeaderLayout = () => {
@@ -10,7 +10,7 @@ const HeaderLayout = () => {
 
       <div className="flex items-center gap-3">
         {user && (
-          <Button variant="primary" onClick={() => signOutData()}>
+          <Button type="primary" onClick={() => signOutData()}>
             Logout
           </Button>
         )}

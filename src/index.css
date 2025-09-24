@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-primary: #0ea5a5; /* teal-600: saúde/confiança */
+  --color-secondary: #2563eb; /* blue-600: confiabilidade */
+  --color-tertiary: #14b8a6; /* teal-500: clean/acento */
+}
+
+.themed-card .ant-card-head-title,
+.themed-card .ant-statistic-title {
+  color: #0f172a;
+}
+
+.themed-card .ant-statistic-content-value {
+  color: var(--color-secondary);
+}
+
+.ant-btn-primary {
+  background: var(--color-primary);
+}

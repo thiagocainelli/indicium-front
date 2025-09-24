@@ -12,6 +12,7 @@ const ProjectRoutes = () => {
   // Authentication Pages
   const Login = React.lazy(() => import("./pages/authentication/Login"));
   const Register = React.lazy(() => import("./pages/authentication/Register"));
+  const SragDashboard = React.lazy(() => import("./pages/srag/Dashboard"));
 
   return (
     <React.Suspense
@@ -30,7 +31,7 @@ const ProjectRoutes = () => {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {user && <></>}
+          {user && <Route path="/dashboard" element={<SragDashboard />} />}
         </Routes>
       </Router>
     </React.Suspense>
