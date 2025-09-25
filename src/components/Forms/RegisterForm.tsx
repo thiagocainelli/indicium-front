@@ -58,7 +58,6 @@ const RegisterForm = ({ onSuccess, redirectTo = "/" }: RegisterFormProps) => {
         navigate(redirectTo);
       }
     } catch (error) {
-      console.error(error);
       message.error("Falha ao criar conta. Por favor, tente novamente.");
     } finally {
       setLoading(false);

@@ -1,12 +1,12 @@
 # Indicium Healthcare
 
-Sistema web moderno desenvolvido com React 19 e TypeScript.
+Sistema web moderno para monitoramento e análise de dados de SRAG (Síndrome Respiratória Aguda Grave), desenvolvido com React 18 e TypeScript. A aplicação oferece dashboards interativos, métricas em tempo real e visualizações avançadas para profissionais de saúde e pesquisadores.
 
 ## 🚀 Tecnologias Utilizadas
 
 ### **Frontend Core**
 
-- **React 19.0.0** - Framework principal com hooks modernos
+- **React 18.3.1** - Framework principal com hooks modernos
 - **TypeScript 5.7.2** - Tipagem estática e desenvolvimento seguro
 - **Vite 6.0.3** - Build tool rápido e moderno
 - **React Router DOM 7.0.2** - Roteamento e navegação
@@ -15,19 +15,27 @@ Sistema web moderno desenvolvido com React 19 e TypeScript.
 
 - **Ant Design 5.22.4** - Componentes de interface profissionais
 - **Tailwind CSS 3.4.16** - Framework CSS utilitário
+- **Framer Motion 12.23.21** - Animações fluidas e interativas
 - **PostCSS 8.4.49** - Processamento CSS avançado
 - **Autoprefixer 10.4.20** - Compatibilidade cross-browser
 
+### **Data Visualization & Charts**
+
+- **Recharts 2.12.7** - Biblioteca de gráficos responsivos
+- **Lucide React 0.468.0** - Ícones modernos e consistentes
+- **Ant Design Icons 5.5.2** - Ícones complementares
+
 ### **HTTP & APIs**
 
-- **Axios 1.7.9** - Cliente HTTP com interceptors
-- **API Request Utils** - Sistema de requisições centralizado
+- **Axios 1.7.9** - Cliente HTTP com interceptors avançados
+- **API Request Utils** - Sistema de requisições centralizado com retry automático
+- **LRU Cache 11.0.2** - Cache inteligente para otimização
 
 ### **Utilitários**
 
 - **Day.js 1.11.15** - Manipulação de datas
-- **Nookies 2.5.2** - Gerenciamento de cookies
-- **Query String 9.1.1** - Parsing de URLs
+- **Nookies 2.5.2** - Gerenciamento seguro de cookies
+- **Query String 9.1.1** - Parsing de URLs e parâmetros
 
 ### **Desenvolvimento**
 
@@ -91,19 +99,30 @@ yarn preview
 
 ## 🎯 Funcionalidades Principais
 
-### **🔐 Sistema de Autenticação**
+### **🔐 Sistema de Autenticação Avançado**
 
-- **Login/Registro** de usuários
-- **JWT Token** com cookies seguros
+- **Login/Registro** de usuários com validação robusta
+- **JWT Token** com cookies seguros e expiração automática
 - **Proteção de rotas** baseada em autenticação
-- **Logout automático** em múltiplas abas
+- **Logout automático** em múltiplas abas via BroadcastChannel
+- **Interceptors** para renovação automática de tokens
+- **Tratamento de erros** 401/403 com redirecionamento seguro
 
-### **🎨 Interface Responsiva**
+### **📊 Dashboard SRAG Inteligente**
 
-- **Design System** consistente
-- **Tema claro/escuro** com CSS variables
-- **Componentes reutilizáveis** e customizáveis
-- **Layout responsivo** para todos os dispositivos
+- **Métricas em Tempo Real**: Taxa de mortalidade, ocupação de UTI, taxa de vacinação
+- **Gráficos Interativos**: Visualizações com Recharts para análise temporal
+- **Filtros Avançados**: Por região (estado/cidade), período (diário/mensal/anual)
+- **Tabela Paginada**: Listagem completa de casos com filtros múltiplos
+- **Animações Fluidas**: Transições suaves com Framer Motion
+
+### **🎨 Interface Moderna e Responsiva**
+
+- **Design System** consistente com Ant Design + Tailwind CSS
+- **Animações Fluidas** com Framer Motion
+- **Layout Responsivo** para todos os dispositivos
+- **Componentes Reutilizáveis** e customizáveis
+- **UX Otimizada** com feedback visual e loading states
 
 ## 🏗️ Arquitetura do Projeto
 
@@ -112,16 +131,36 @@ yarn preview
 ```
 src/
 ├── components/          # Componentes reutilizáveis
-│   ├── forms/          # Formulários específicos
-│   ├── layout/         # Componentes de layout
+│   ├── Form/           # Formulário base
+│   ├── Forms/          # Formulários específicos (Login, Register)
+│   ├── Srag/           # Componentes específicos do SRAG
+│   │   ├── FilterDrawer.tsx    # Drawer de filtros avançados
+│   │   ├── MetricsCards.tsx    # Cards de métricas
+│   │   ├── SragChart.tsx       # Gráficos interativos
+│   │   └── SragTable.tsx       # Tabela paginada
+│   ├── UI/             # Componentes de interface
 │   └── index.ts        # Exportações centralizadas
-├── contexts/           # Contextos React (Auth, Theme, Toast)
-├── hooks/              # Custom hooks (useMovies)
+├── contexts/           # Contextos React
+│   └── AuthContext.tsx # Autenticação e gerenciamento de usuário
+├── layout/             # Layout base da aplicação
+│   ├── Footer/         # Rodapé
+│   ├── Header/         # Cabeçalho
+│   └── index.tsx       # Layout principal
 ├── pages/              # Páginas da aplicação
+│   ├── authentication/ # Páginas de autenticação
+│   ├── srag/          # Dashboard SRAG
+│   └── Default/       # Páginas padrão (404, etc)
 ├── services/           # Serviços de API
+│   ├── auth.service.ts # Serviços de autenticação
+│   └── srag.service.ts # Serviços de dados SRAG
 ├── types/              # Definições TypeScript
-├── utils/              # Utilitários e helpers
-└── styles/             # Estilos globais e CSS
+│   ├── auth.d.ts       # Tipos de autenticação
+│   ├── srag.d.ts       # Tipos de dados SRAG
+│   └── user.d.ts       # Tipos de usuário
+├── App.tsx             # Componente principal
+├── Routes.tsx          # Configuração de rotas
+├── main.tsx           # Ponto de entrada
+└── index.css          # Estilos globais
 ```
 
 ### **Padrões de Desenvolvimento**
@@ -134,21 +173,21 @@ src/
 
 ### **Sistema de Estado**
 
-- **AuthContext** - Autenticação e usuário
-- **ThemeContext** - Tema da aplicação
-- **ToastContext** - Notificações globais
-- **useMovies** - Estado dos filmes e filtros
+- **AuthContext** - Autenticação, usuário e gerenciamento de sessão
+- **BroadcastChannel** - Sincronização de logout entre abas
+- **Cookies Seguros** - Gerenciamento de tokens com nookies
+- **Estado Local** - Filtros, métricas e dados do dashboard
 
 ## 🔧 Configurações Especiais
 
-### **Sistema de Requisições**
+### **Sistema de Requisições Avançado**
 
-- **Interceptors** para autenticação
-- **Retry automático** em falhas
-- **Cancelamento** de requisições
-- **Tratamento de erros** centralizado
-
-## 🤝 Contribuição
+- **Interceptors Inteligentes** para autenticação automática
+- **Retry Automático** com backoff exponencial (3 tentativas)
+- **Cancelamento de Requisições** para evitar race conditions
+- **Tratamento de Erros** centralizado com mensagens específicas
+- **Cache LRU** para otimização de performance
+- **Headers Dinâmicos** com tokens JWT automáticos
 
 ### **Padrões de Código**
 
@@ -168,14 +207,55 @@ style: formatação
 test: testes
 ```
 
+## 📊 Funcionalidades do Dashboard SRAG
+
+### **Métricas Principais**
+
+- **Taxa de Aumento de Casos**: Variação percentual em relação ao período anterior
+- **Taxa de Mortalidade**: Proporção de óbitos entre os casos registrados
+- **Taxa de Ocupação de UTI**: Proporção de internações em UTI
+- **Taxa de Vacinação**: Proporção de casos vacinados
+
+### **Filtros e Visualizações**
+
+- **Agrupamento**: Por estado ou cidade
+- **Períodos**: Diário, mensal ou anual
+- **Intervalo de Datas**: Seleção personalizada
+- **Região**: Filtro específico por localização
+
+### **Gráficos Interativos**
+
+- **Timeline de Casos**: Evolução temporal dos dados
+- **Comparativos**: Análise entre diferentes períodos
+- **Responsivos**: Adaptação automática para mobile
+
+## 🔒 Segurança e Performance
+
+### **Autenticação Robusta**
+
+- **JWT Tokens** com expiração configurável
+- **Cookies HttpOnly** para proteção contra XSS
+- **Interceptors** para renovação automática
+- **BroadcastChannel** para sincronização entre abas
+
+### **Otimizações**
+
+- **Lazy Loading** de componentes
+- **Code Splitting** automático com Vite
+- **Cache LRU** para requisições frequentes
+- **Retry Logic** para falhas de rede
+
 ## 📄 Licença
 
-Este projeto é desenvolvido para Indicium como teste técnico.
+Este projeto é desenvolvido para **Indicium** como teste técnico para avaliação de competências em desenvolvimento frontend moderno.
 
 ## 👨‍💻 Desenvolvedor
 
 **Thiago Cainelli** - Desenvolvedor Full Stack
 
+- Especialista em React, TypeScript e arquiteturas modernas
+- Foco em UX/UI e performance web
+
 ---
 
-**Indicium Front** - Sistema moderno e robusto!
+**Indicium Healthcare** - Sistema moderno, robusto e focado em saúde pública! 🏥✨

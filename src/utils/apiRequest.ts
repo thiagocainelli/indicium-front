@@ -2,6 +2,7 @@
 import axios, { AxiosError, CancelTokenSource } from "axios";
 import { parseCookies } from "nookies";
 import { signOutData } from "../contexts/AuthContext";
+import { message } from "antd";
 
 let failedRequestsQueue: {
   onSuccess: (token: string) => void;
@@ -131,16 +132,16 @@ const handleError = (error: any) => {
     const status = error.response?.status;
 
     if (status === 401) {
-      console.error("Usuário não autenticado. Faça login novamente.");
+      message.error("Usuário não autenticado. Faça login novamente.");
       signOutData();
     } else if (status === 403) {
-      console.error("Acesso negado. Você não tem permissão para essa ação.");
+      message.error("Acesso negado. Você não tem permissão para essa ação.");
     } else if (status === 500) {
-      console.error("Erro no servidor. Tente novamente mais tarde.");
+      message.error("Erro no servidor. Tente novamente mais tarde.");
     } else {
-      console.error(error.response?.data?.message || "Erro desconhecido.");
+      message.error(error.response?.data?.message || "Erro desconhecido.");
     }
   } else {
-    console.error("Erro inesperado:", error);
+    message.error("Erro inesperado:", error);
   }
 };

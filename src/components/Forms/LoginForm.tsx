@@ -41,7 +41,6 @@ const LoginForm = () => {
         window.location.href = "/dashboard";
       }
     } catch (error) {
-      console.error("Error during login:", error);
       message.error(
         "Erro ao realizar login. Por favor, verifique suas credenciais e tente novamente."
       );
