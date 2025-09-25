@@ -38,7 +38,9 @@ const LoginForm = () => {
       if (response) {
         message.success("Login realizado com sucesso!");
 
-        window.location.href = "/dashboard";
+        setTimeout(() => {
+          window.location.href = "/dashboard";
+        }, 1500);
       }
     } catch (error) {
       message.error(
