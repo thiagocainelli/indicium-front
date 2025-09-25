@@ -2,6 +2,10 @@
 
 Sistema web moderno para monitoramento e análise de dados de SRAG (Síndrome Respiratória Aguda Grave), desenvolvido com React 18 e TypeScript. A aplicação oferece dashboards interativos, métricas em tempo real e visualizações avançadas para profissionais de saúde e pesquisadores.
 
+## 🚀 Deploy
+
+- URL hospedado (Vercel): https://indicium-front.vercel.app/
+
 ## 🚀 Tecnologias Utilizadas
 
 ### **Frontend Core**
